@@ -40,4 +40,28 @@ print(block_numbers)
 raw_tx = "0x..."
 response = client.broadcast_raw_transaction(raw_tx, chains=["Ethereum", "Polygon"])
 print(response)
+```
+
+---
+
+## Deployment
+
+TradeCast ships with a production-ready Dockerfile so you can build and run the
+Next.js application anywhere that supports containers.
+
+### Build the image
+
+```bash
+docker build -t tradecast-app .
+```
+
+### Run the container
+
+```bash
+docker run --env-file .env.local -p 3000:3000 tradecast-app
+```
+
+The application will be available at `http://localhost:3000`. Provide any
+required runtime secrets (such as API keys) through an `.env.local` file or
+environment variables that you mount into the container.
 
