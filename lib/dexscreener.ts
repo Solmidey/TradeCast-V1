@@ -1,4 +1,5 @@
 import { TradeCast, TradeCastChartPoint, TradeCastPairMeta, TradeCastTrade } from "./types";
+import { buildTradeReceiptUrl } from "./notary";
 
 interface DexScreenerPair {
   chainId: string;
@@ -121,11 +122,17 @@ export function toTradeCast(
     trader: trade.maker,
   };
 
+  const receiptUrl = buildTradeReceiptUrl(txHash);
+  const transactionUrl = txHash ? `https://basescan.org/tx/${txHash}` : undefined;
+  const proofUrl = receiptUrl ?? transactionUrl ?? pair.url;
+
   return {
     id: `${pair.pairAddress}-${txHash}`,
     pair: meta,
     trade: tradeMeta,
-    proofUrl: `https://basescan.org/tx/${txHash}`,
+    proofUrl,
+    receiptUrl,
+    transactionUrl,
     mirrorUrl: buildMirrorUrl(pair),
     chart,
   };
