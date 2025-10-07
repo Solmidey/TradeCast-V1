@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { formatTokenAmount, formatUsd } from "@/lib/format";
 import { cn } from "./ui/utils";
 import { TradeMirrorPreset } from "@/lib/types";
+import { buildTradeReceiptUrl, getReceiptContractAddress } from "@/lib/notary";
 
 const mirrorPresets: TradeMirrorPreset[] = [
   {
@@ -36,6 +37,22 @@ export function TradeComposer() {
     const action = direction === "buy" ? "Bought" : "Sold";
     return `${action} ${formatTokenAmount(amountToken)} ${tokenSymbol} on ${network} (${formatUsd(amountUsd)}) #TradeCast`;
   }, [direction, amountToken, tokenSymbol, network, amountUsd]);
+
+  const receiptLink = useMemo(() => buildTradeReceiptUrl(txHash), [txHash]);
+  const proofLine = useMemo(() => {
+    if (receiptLink) {
+      return `Receipt log: ${receiptLink}`;
+    }
+    if (txHash) {
+      return `Proof: https://basescan.org/tx/${txHash}`;
+    }
+    return "Proof: pending";
+  }, [receiptLink, txHash]);
+  const previewPayload = useMemo(
+    () => `${castCopy}\n\n${proofLine}\nWallet: ${wallet}`,
+    [castCopy, proofLine, wallet],
+  );
+  const receiptAddress = getReceiptContractAddress();
 
   return (
     <aside className="space-y-6">
@@ -140,11 +157,13 @@ export function TradeComposer() {
       <div className="rounded-3xl border border-primary/30 bg-primary/10 p-6 text-sm text-white/80">
         <h3 className="text-lg font-semibold text-primary-foreground">Cast preview</h3>
         <p className="mt-4 whitespace-pre-wrap rounded-2xl border border-primary/30 bg-black/30 px-4 py-3 text-sm font-mono text-primary-foreground">
-          {castCopy}
-
-Proof: https://basescan.org/tx/{txHash}
-Wallet: {wallet}
+          {previewPayload}
         </p>
+        {receiptAddress ? (
+          <p className="mt-2 text-xs text-primary-foreground/60">
+            TradeCast receipts live at <span className="font-mono">{receiptAddress}</span>. Indexers can filter by the trade transaction hash.
+          </p>
+        ) : null}
         <p className="mt-3 text-xs text-primary-foreground/70">
           Drop this text into Warpcast or plug it into a Frame composer. TradeCast Mini Apps can also ingest this payload over
           Farcaster JSON.

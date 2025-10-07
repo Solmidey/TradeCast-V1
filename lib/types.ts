@@ -29,6 +29,8 @@ export interface TradeCast {
   pair: TradeCastPairMeta;
   trade: TradeCastTrade;
   proofUrl: string;
+  receiptUrl?: string;
+  transactionUrl?: string;
   mirrorUrl?: string;
   chart?: TradeCastChartPoint[];
 }

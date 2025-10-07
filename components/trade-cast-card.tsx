@@ -11,7 +11,7 @@ interface TradeCastCardProps {
 }
 
 export function TradeCastCard({ cast }: TradeCastCardProps) {
-  const { pair, trade, proofUrl, mirrorUrl, chart } = cast;
+  const { pair, trade, proofUrl, mirrorUrl, chart, receiptUrl, transactionUrl } = cast;
 
   const chartData = useMemo(
     () =>
@@ -81,8 +81,18 @@ export function TradeCastCard({ cast }: TradeCastCardProps) {
               target="_blank"
               rel="noreferrer"
             >
-              Onchain proof {shortenHash(trade.txHash)}
+              {receiptUrl ? "Receipt log" : "Onchain proof"} {shortenHash(trade.txHash)}
             </a>
+            {receiptUrl && transactionUrl ? (
+              <a
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1 transition hover:border-white/40"
+                href={transactionUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Trade tx
+              </a>
+            ) : null}
             {mirrorUrl ? (
               <a
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1 text-sm font-semibold text-primary-foreground transition hover:shadow-glow"
