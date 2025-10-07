@@ -18,7 +18,7 @@
     {
         "name": "Base",
         "chain_id": 8453,
-        "rpc_url": "https://mainnet.base.org",
+        "rpc_url": "https://rpc.ankr.com/base/fe0da18bd714518c9d7bb2736fc2b7432a179a7cac8d93e3f107569eee4f23e8",
         "currency_symbol": "ETH",
         "explorer_url": "https://basescan.org",
         "tags": ["evm", "l2"]
