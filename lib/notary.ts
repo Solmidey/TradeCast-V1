@@ -3,7 +3,20 @@ import { keccak256, stringToHex } from "viem";
 const NOTARY_EVENT_SIGNATURE = "TradeNotarized(address,bytes32,bytes32,string,uint256)";
 const TRADE_NOTARIZED_TOPIC = keccak256(stringToHex(NOTARY_EVENT_SIGNATURE));
 
-const RECEIPT_ADDRESS = process.env.NEXT_PUBLIC_TRADE_RECEIPT_ADDRESS?.toLowerCase();
+const FALLBACK_RECEIPT_ADDRESS = "0xaf94ad1a7c0c9f3f988217c46dca5ea4665f57c0";
+
+function normalizeAddress(value: string | undefined | null) {
+  if (!value) return undefined;
+  const trimmed = value.trim();
+  if (!trimmed) return undefined;
+  return trimmed.startsWith("0x") ? trimmed.toLowerCase() : `0x${trimmed.toLowerCase()}`;
+}
+
+const rawReceiptAddress = process.env.NEXT_PUBLIC_TRADE_RECEIPT_ADDRESS;
+const RECEIPT_ADDRESS =
+  rawReceiptAddress?.trim().toLowerCase() === "disabled"
+    ? undefined
+    : normalizeAddress(rawReceiptAddress) ?? FALLBACK_RECEIPT_ADDRESS;
 const BASESCAN_ADDRESS = "https://basescan.org";
 
 function normalizeTxHash(hash: string | undefined | null) {

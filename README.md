@@ -90,7 +90,15 @@ records the trade payload and a pointer to the original trade transaction via an
    `contracts/deployments/base-trade-receipt.json`.
 
 3. Expose the deployed address to the Next.js application so casts can link to the
-   notarised log by setting `NEXT_PUBLIC_TRADE_RECEIPT_ADDRESS` in `.env.local`.
+   notarised log by setting `NEXT_PUBLIC_TRADE_RECEIPT_ADDRESS` in `.env.local` (see
+   `.env.local.example` for a ready-to-use template).
+
+### Production deployment
+
+TradeCast is already deployed on Base at `0xaf94ad1a7c0c9f3f988217c46dca5ea4665f57c0`.
+The web client falls back to this address automatically, so you only need to override
+`NEXT_PUBLIC_TRADE_RECEIPT_ADDRESS` if you ship your own copy or want to disable the
+feature (set the value to `disabled`).
 
 ### Creating a receipt
 
