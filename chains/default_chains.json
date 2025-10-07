@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Ethereum",
+        "chain_id": 1,
+        "rpc_url": "https://mainnet.infura.io/v3/your-project-id",
+        "currency_symbol": "ETH",
+        "explorer_url": "https://etherscan.io",
+        "tags": ["mainnet", "evm"]
+    },
+    {
+        "name": "Polygon",
+        "chain_id": 137,
+        "rpc_url": "https://polygon-rpc.com",
+        "currency_symbol": "MATIC",
+        "explorer_url": "https://polygonscan.com",
+        "tags": ["evm", "sidechain"]
+    },
+    {
+        "name": "Base",
+        "chain_id": 8453,
+        "rpc_url": "https://mainnet.base.org",
+        "currency_symbol": "ETH",
+        "explorer_url": "https://basescan.org",
+        "tags": ["evm", "l2"]
+    }
+]
