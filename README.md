@@ -81,7 +81,7 @@ records the trade payload and a pointer to the original trade transaction via an
 
    ```bash
    export DEPLOYER_PRIVATE_KEY=0xabc123...
-   export BASE_RPC_URL=https://mainnet.base.org # optional
+   export BASE_RPC_URL=https://rpc.ankr.com/base/fe0da18bd714518c9d7bb2736fc2b7432a179a7cac8d93e3f107569eee4f23e8 # optional
    npm run deploy:receipt
    ```
 
