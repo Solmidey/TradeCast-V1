@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-surface text-white;
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(93, 107, 255, 0.7), rgba(246, 193, 119, 0.6));
+  padding: 1px;
+}
+
+.gradient-border > .gradient-content {
+  border-radius: 1.2rem;
+  background: rgba(9, 12, 23, 0.85);
+}
