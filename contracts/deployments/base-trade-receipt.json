@@ -1,0 +1,7 @@
+{
+  "network": "base-mainnet",
+  "address": "0xaf94ad1a7c0c9f3f988217c46dca5ea4665f57c0",
+  "eventSignature": "TradeNotarized(address,bytes32,bytes32,string,uint256)",
+  "notes": "Production TradeReceipt deployment referenced by the web client.",
+  "updatedAt": "2024-10-07T00:00:00.000Z"
+}
