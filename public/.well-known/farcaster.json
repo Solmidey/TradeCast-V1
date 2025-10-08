@@ -1,0 +1,8 @@
+{
+  "version": "1",
+  "name": "TradeCast",
+  "homeUrl": "https://trade-cast-v1.vercel.app/tradecast",
+  "iconUrl": "https://trade-cast-v1.vercel.app/icon.png",
+  "splashImageUrl": "https://trade-cast-v1.vercel.app/splash.png",
+  "splashBackgroundColor": "#0a0a0a"
+}
