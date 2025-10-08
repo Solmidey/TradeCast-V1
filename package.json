@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy:receipt": "node scripts/deploy-trade-receipt.mjs"
+    "deploy:receipt": "node scripts/deploy-trade-receipt.mjs",
+    "set:env": "node scripts/set-env.js"
   },
   "dependencies": {
     "@farcaster/miniapp-sdk": "^0.1.10",

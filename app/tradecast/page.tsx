@@ -1,3 +1,4 @@
+const CONTRACT_ADDR = process.env.NEXT_PUBLIC_TRADERECEIPT_ADDR || '0xAf94ad1A7c0C9F3f988217c46DCa5eA4665f57c0';
 export default function Page() {
   return (
     <main className="p-8">
